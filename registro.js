@@ -25,7 +25,7 @@ let registroAlumno = (nivel) => {
   } else if (nivel == "primaria") {
     nivelito = "primaria";
   } else if (nivel == "secundaria") {
-    nivel = "secundaria";
+    nivelito = "secundaria";
   } else {
     nivelito = console.log("dato incorrecto");
   }
