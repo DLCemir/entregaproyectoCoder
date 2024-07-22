@@ -1,3 +1,15 @@
+let meses = [
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
+];
 //funcion para obtener el nivel del alumno
 function obtenerNivel() {
   let nivel = prompt(
@@ -63,6 +75,7 @@ let registroAlumno2 = (nivel) => {
 function calcularTotalPagoAlumnos() {
   const totalAlum = prompt("Ingrese cuantos alumnos va a registrar");
   let pagoTotal = 0;
+  let alumnosRegistrados = [];
 
   for (let i = 0; i < totalAlum; i++) {
     let alumno = prompt("Nombre del alumno y apellido");
@@ -75,16 +88,33 @@ function calcularTotalPagoAlumnos() {
     let total = mensualidad * 10 + ni1;
     pagoTotal += total;
 
+    let alumnoData = {
+      nombre: alumno,
+      dni: dni,
+      apoderado: apoderado,
+      apoderadoCell: apoderadoCell,
+      nivel: nivel1,
+      matricula: ni1,
+      mensualidad: mensualidad,
+      total: total,
+    };
+
+    alumnosRegistrados.push(alumnoData);
+
     console.log(`Nombre y apellido del Aumno: ${alumno}`);
     console.log(`DNI: ${dni}`);
     console.log(`Apoderado: ${apoderado}`);
     console.log(`Numero de telefono: ${apoderadoCell}`);
     console.log(`Nivel: ${nivel1}`);
     console.log(`Costo de matricula: ${ni1} soles`);
-    console.log(`Costo de mensualidad: ${mensualidad} soles`);
+    for (let i = 0; i < meses.length; i++) {
+      console.log(meses[i] + "= " + mensualidad + " soles");
+    }
+    //console.log(`Costo de mensualidad: ${mensualidad} soles`);
     console.log(`Monto total a pagar por el alumno ${alumno} = ${total} soles`);
     console.log("----------------------------------------");
   }
+
   console.log(`Total a pagar por todos los alumnos: ${pagoTotal} soles`);
   let descuento = pagoTotal * 0.2;
   let pagoCompleto = prompt(
@@ -102,6 +132,8 @@ function calcularTotalPagoAlumnos() {
       `Se registro de manera exitosa. Gracias por confiar en nosotros`
     );
   }
+  console.log("Alumnos registrados:");
+  console.log(alumnosRegistrados);
 }
 
 //llamada
